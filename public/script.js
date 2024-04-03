@@ -2,19 +2,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const affirmationText = document.getElementById('affirmationText');
     const refreshButton = document.getElementById('refreshButton'); // Get the refresh button by its ID
 
-    async function fetchAffirmation() {
-        try {
-            const response = await fetch('/affirmation');
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
-            }
-            const data = await response.json();
-            affirmationText.textContent = data.text; // Set the text content of the affirmationText element to the fetched text
-        } catch (error) {
-            console.error('Fetch error:', error);
-            affirmationText.textContent = "Failed to load affirmation. Please try again."; // Provide a fallback message
+    const baseUrl = window.location.hostname.includes('localhost')
+  ? 'http://localhost:3000'
+  : 'https://zen-pi.vercel.app';
+
+async function fetchAffirmation() {
+    try {
+        const response = await fetch(`${baseUrl}/affirmation`);
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
+        const data = await response.json();
+        affirmationText.textContent = data.text;
+    } catch (error) {
+        console.error('Fetch error:', error);
+        affirmationText.textContent = "Failed to load affirmation. Please try again.";
     }
+}
 
     fetchAffirmation(); // Fetch an affirmation when the page loads
 
