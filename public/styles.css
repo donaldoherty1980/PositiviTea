@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  font-family: 'Merriweather', serif; /* Changed to Merriweather to match the HTML */
+  background-color: #ffffff;
+}
+
+.main-container {
+  text-align: center;
+  padding-top: 5vh;
+  padding-bottom: 10vh;
+  height: calc(100% - 60px);
+}
+
+.icon img {
+  margin-top: 100px;
+  max-width: 250px;
+  height: auto;
+}
+
+.affirmation {
+  font-size: 28px;
+  margin: 20px 0;
+}
+
+/* Centered refresh button */
+.buttons {
+  text-align: center;
+  margin-top: 60px; /* Adjusted for better vertical spacing */
+}
+
+#refreshButton {
+  background-color: #F2E4DE;
+  color: #000000;
+  border: none;
+  border-radius: 10px;
+  padding: 15px 30px;
+  cursor: pointer;
+  font-size: 18px; /* This is the new line you're adding */
+}
+
+#refreshButton:hover {
+  opacity: 0.9;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
+  position: relative; /* Keeps footer at bottom */
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.75rem;
+}
+
+footer a {
+  color: #84807C;
+  text-decoration: none;
+  padding: 0 5px;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Responsive adjustments for footer */
+@media (max-width: 576px) {
+  footer {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      font-family: 'Roboto', sans-serif; /* Changing font to Roboto */
+  }
+
+  footer p {
+      width: 100%;
+      margin-bottom: 10px;
+  }
+}
+
+/* Adjusting the spacing and font of the donate link */
+.donateLink {
+  color: #556945;
+  text-decoration: underline;
+  margin-top: 20px; /* Increased spacing */
+  display: block; /* Ensures it appears on a new line */
+  font-family: 'Roboto', sans-serif; /* Changing font to Roboto */
+}
+
+.donateLink:hover {
+  text-decoration: none;
+}
