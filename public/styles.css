@@ -53,6 +53,7 @@ footer {
   justify-content: space-between;
   padding: 20px;
   position: relative; /* Keeps footer at bottom */
+  font-family: 'Roboto', sans-serif;
 }
 
 footer p {
