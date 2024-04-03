@@ -1,4 +1,4 @@
-Affirmation App
+Zen Affirmation App
 
 Description
 
