@@ -88,6 +88,11 @@ app.get('/affirmation', (req, res) => {
     res.status(200).json({ text: affirmation });
 });
 
+// Route to handle 'favicon.ico' request
+app.get('/favicon.ico', (req, res) => {
+    res.status(204); // No Content
+});
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
