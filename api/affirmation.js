@@ -1,39 +1,42 @@
-// api/affirmation.js
-const { MongoClient } = require('mongodb');
+const fetch = require('node-fetch');
 
 module.exports = async (req, res) => {
-    // Retrieve the MongoDB URI from the environment variable
-    const uri = process.env.MONGO_URI;
-
-    // Add a console.log here to debug the value of uri, remove it after confirming it works
-    // console.log('MongoDB URI:', uri); // Be cautious with logging sensitive information
-
-    // Create a new MongoClient using the URI from the environment variables
-    const client = new MongoClient(uri);
+    // Define the MongoDB Data API URL
+    const baseUrl = 'https://eu-west-2.aws.data.mongodb-api.com/app/data-bydap/endpoint/data/v1/action/findOne';
+    
+    // Setup the data payload
+    const dataPayload = {
+        collection: 'affirmationsbyid',
+        database: 'affirmations',
+        dataSource: 'ZenCluster',
+        projection: { "_id": 1 }
+    };
+    
+    // Set up the headers
+    const headers = {
+        'Content-Type': 'application/json',
+        'Access-Control-Request-Headers': '*',
+        'api-key': 'zTuU87EBcMMe6YlXLozEQGihqNvEoQc4Yar7zEXeDHPQ9vB9PGSiFb2ai4u1cFBP'
+    };
 
     try {
-        await client.connect();
-        const database = client.db('affirmations');
-        const affirmationsCollection = database.collection('affirmationsbyid');
-        
-        // Add your logic to fetch a random affirmation document
-        // ...
+        const response = await fetch(baseUrl, {
+            method: 'POST',
+            headers: headers,
+            body: JSON.stringify(dataPayload),
+        });
 
-        // Remember to close the client before sending the response
-        await client.close();
-
-        // Send the fetched affirmation back in the response
-        res.status(200).json({ affirmation: /* ... */ });
-    } catch (error) {
-        // Handle any errors that occur during the request
-        console.error('Error fetching affirmation:', error);
-
-        // Close the client if an error occurs
-        if (client.isConnected()) {
-            await client.close();
+        if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        // Send an error response
-        res.status(500).json({ error: error.message });
+        const data = await response.json();
+        
+        // Assuming the affirmation text is directly in the response, modify as needed.
+        res.status(200).json({ text: data.document.affirmation });
+
+    } catch (error) {
+        console.error('Error fetching affirmation:', error);
+        res.status(500).json({ error: 'Error fetching affirmation' });
     }
 };
