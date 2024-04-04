@@ -1,18 +1,20 @@
 {
   "name": "zen",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "A simple Node.js app providing daily affirmations",
   "scripts": {
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "engines": {
+    "node": "16.x"
+  },
+  "keywords": ["affirmations", "wellness", "positivity"],
+  "author": "Your Name",
+  "license": "MIT",
   "dependencies": {
     "dotenv": "^16.4.5",
     "express": "^4.19.2",
-    "mongodb": "^6.5.0",
-    "mongoose": "^8.2.4"
+    "mongodb": "^6.5.0"
   }
 }
