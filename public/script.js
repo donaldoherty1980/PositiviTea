@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
     const affirmationText = document.getElementById('affirmationText');
-    const refreshButton = document.getElementById('refreshButton'); // Get the refresh button by its ID
+    const refreshButton = document.getElementById('refreshButton'); // Get the refresh button by its 
+    const affirmationIcon = document.getElementById('affirmationIcon'); // Make sure this ID matches your image ID in the HTML
 
     async function fetchAffirmation() {
         try {

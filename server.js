@@ -106,13 +106,9 @@ require('dotenv').config();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
-
 const uri = process.env.MONGO_URI;
 
-const client = new MongoClient(uri, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+const client = new MongoClient(uri);
 
 async function getRandomAffirmation() {
     try {
@@ -120,22 +116,18 @@ async function getRandomAffirmation() {
         const database = client.db('affirmations');
         const affirmationsCollection = database.collection('affirmationsbyid');
 
-        // Get a random entry's index
         const count = await affirmationsCollection.countDocuments();
         const randomIndex = Math.floor(Math.random() * count);
-        
-        // Fetch a random affirmation, assuming your IDs are sequential and start from 1
         const randomAffirmation = await affirmationsCollection.findOne({ id: randomIndex + 1 });
-        return randomAffirmation.affirmations; // Using the field name 'affirmations' here
+
+        return randomAffirmation.affirmations; // Make sure this matches the name of the field in your documents
     } finally {
         await client.close();
     }
 }
 
-// Serve static files from the 'public' directory
 app.use(express.static('public'));
 
-// Handle requests to the '/affirmation' endpoint
 app.get('/affirmation', async (req, res) => {
     try {
         const affirmation = await getRandomAffirmation();
@@ -146,10 +138,16 @@ app.get('/affirmation', async (req, res) => {
     }
 });
 
-// Route to handle 'favicon.ico' request
 app.get('/favicon.ico', (req, res) => res.status(204).end());
 
-// Start the server
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
+// Handle process termination and close the MongoDB client
+process.on('SIGINT', async () => {
+    await client.close();
+    process.exit();
+});
+
+
