@@ -1,4 +1,5 @@
-const fetch = require('node-fetch');
+// Since node-fetch is an ES module, we are using dynamic import here.
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 module.exports = async (req, res) => {
     // Define the MongoDB Data API URL
@@ -9,13 +10,12 @@ module.exports = async (req, res) => {
         collection: 'affirmationsbyid',
         database: 'affirmations',
         dataSource: 'ZenCluster',
-        projection: { "_id": 1 }
+        projection: { "_id": 0, "affirmation": 1 }
     };
     
     // Set up the headers
     const headers = {
         'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': '*',
         'api-key': 'zTuU87EBcMMe6YlXLozEQGihqNvEoQc4Yar7zEXeDHPQ9vB9PGSiFb2ai4u1cFBP'
     };
 
@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
         const response = await fetch(baseUrl, {
             method: 'POST',
             headers: headers,
-            body: JSON.stringify(dataPayload),
+            body: JSON.stringify(dataPayload)
         });
 
         if (!response.ok) {
@@ -32,7 +32,7 @@ module.exports = async (req, res) => {
 
         const data = await response.json();
         
-        // Assuming the affirmation text is directly in the response, modify as needed.
+        // Assuming the affirmation text is directly in the response's document property, modify as needed.
         res.status(200).json({ text: data.document.affirmation });
 
     } catch (error) {
