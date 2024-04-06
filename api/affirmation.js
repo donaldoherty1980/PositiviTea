@@ -1,11 +1,14 @@
 // affirmation.js (Placed in the /api directory to be deployed as a Vercel Serverless Function)
 
-const fetch = (...args) => import('node-fetch').then(({ default: fetch }) => fetch(...args));
+const fetch = require('node-fetch');  
+const MongoClient = require('mongodb').MongoClient;  
+const assert = require('assert');
 
 module.exports = async (req, res) => {
     // Define the MongoDB Data API URL
-    const baseUrl = process.env.MONGODB_API_URL;
-    const apiKey = process.env.MONGODB_API_KEY;
+    const baseUrl = process.env.MONGODB_API_URL;  
+    const apiKey = process.env.MONGODB_API_KEY;  
+    const dbName = process.env.MONGODB_DATABASE_NAME;
 
     // Setup the data payload
     const dataPayload = {
