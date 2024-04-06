@@ -5,40 +5,27 @@ import { MongoClient } from 'mongodb';
 
 // Async function to handle the API endpoint call.
 export default async function handler(req, res) {
-    // Create a new MongoClient
-    const client = new MongoClient(process.env.MONGO_URI);
+    const uri = process.env.MONGO_URI; // Make sure this is the same variable name you have in your .env file
+    const client = new MongoClient(uri);
 
     try {
-        // Connect to the client
         await client.connect();
-
-        // Connect to the correct database and collection
         const collection = client.db('affirmations').collection('affirmationsbyid');
-
-        // Create a cursor for a random document
-        const cursor = collection.aggregate([
+        
+        const [randomDocument] = await collection.aggregate([
             { $sample: { size: 1 } }
-        ]);
+        ]).toArray();
 
-        // Get the random document
-        const randomDocument = await cursor.toArray();
-
-        // If no document is found, return a 404
-        if (!randomDocument.length) {
-            res.status(404).json({ error: 'No affirmations found' });
+        if (!randomDocument) {
+            res.status(404).send({ error: 'No affirmations found' });
             return;
         }
 
-        // Send back the random affirmation
-        res.status(200).json({ affirmation: randomDocument[0].affirmations });
-
+        res.status(200).send({ affirmation: randomDocument.affirmations });
     } catch (error) {
-        // If an error occurs, log it and send back a 500 error
-        console.error(error);
-        res.status(500).json({ error: error.message });
+        console.error('An error occurred:', error.stack); // During development it's helpful to log the stack
+        res.status(500).send({ error: 'An error occurred while fetching affirmations.' });
     } finally {
-        // Ensure that the client will close when you finish/error
         await client.close();
     }
 }
-
