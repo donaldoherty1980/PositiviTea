@@ -1,6 +1,6 @@
 // affirmation.js (Placed in the /api directory to be deployed as a Vercel Serverless Function)
 
-const fetch = require('node-fetch');  
+const fetch = await import('node-fetch').then(module => module.default);
 const MongoClient = require('mongodb').MongoClient;  
 const assert = require('assert');
 
