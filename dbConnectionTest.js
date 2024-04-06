@@ -1,21 +1,22 @@
-// dbConnectionTest.js
-require('dotenv').config();
-const { MongoClient, ServerApiVersion } = require('mongodb');
+import dotenv from 'dotenv';
+import { MongoClient } from 'mongodb';
 
-// Ensure that your MONGO_URI is defined in the .env file
+dotenv.config();
+
 const uri = process.env.MONGO_URI;
-const client = new MongoClient(uri, {
-  serverApi: ServerApiVersion.v1
-});
+const client = new MongoClient(uri);
 
 async function run() {
   try {
     await client.connect();
-    await client.db("admin").command({ ping: 1 });
-    console.log("Pinged your deployment. You successfully connected to MongoDB!");
+    const db = client.db(process.env.DB_NAME);
+    console.log(`Connected to database: ${db.databaseName}`);
+    // Perform any operations on the database here
+  } catch (error) {
+    console.error('Failed to connect to the database:', error);
   } finally {
     await client.close();
   }
 }
 
-run().catch(console.dir);
+run();
