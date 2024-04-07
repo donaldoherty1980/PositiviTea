@@ -17,7 +17,11 @@ function connectToDatabase(uri) {
 // Async function to handle the API endpoint call.
 export default async function handler(req, res) {
   try {
+    // Diagnose connection issues with logs
+    console.log('Connecting to database...');
     await connectToDatabase(uri);
+    console.log('Connected to database. Fetching a random document...');
+
     const collection = client.db('affirmations').collection('affirmationsbyid');
     
     const [randomDocument] = await collection.aggregate([
@@ -29,8 +33,12 @@ export default async function handler(req, res) {
       return;
     }
 
+    // Log the document retrieval success
+    console.log('Random document fetched successfully.');
+
     res.status(200).json({ affirmation: randomDocument.affirmations });
   } catch (error) {
+    // Log the specific error
     console.error('An error occurred:', error);
     res.status(500).json({ error: 'An error occurred while fetching affirmations.' });
   }
