@@ -16,11 +16,9 @@
             <p id="affirmationText">Loading...</p>
         </div>
         <div class="buttons" style="text-align: center;">
-            <!-- Existing Refresh Button -->
-            <button id="refreshButton">Refresh</button>
-            <!-- Donate Button That Opens PayPal in a Popup -->
-            <button id="donateButton">Donate</button>
-        </div>
+            <button id="refreshButton" class="button-style">Refresh</button>
+            <button id="donateButton" class="button-style">Donate</button>
+        </div>        
     </div>
     <footer>
         <p>Site by <a href="https://www.linkedin.com/in/donaldoherty">Donal Doherty 2024</a></p>
@@ -30,7 +28,7 @@
     <script>
         document.getElementById('donateButton').addEventListener('click', function() {
             var donationUrl = 'https://www.paypal.com/donate/?hosted_button_id=4SB5TX4VA78XW';
-            var popupOptions = 'width=800,height=600,left=200,top=200';
+            var popupOptions = 'width=800,height=650,left=200,top=200';
             window.open(donationUrl, 'Donate', popupOptions);
         });
     </script>

@@ -28,23 +28,26 @@ html, body {
   margin: 20px 0;
 }
 
-/* Centered refresh button */
+/* Centered buttons */
 .buttons {
   text-align: center;
   margin-top: 60px; /* Adjusted for better vertical spacing */
 }
 
-#refreshButton {
-  background-color: #F2E4DE;
+/* Styles for both refresh and donate buttons */
+.button-style {
+  background-color: #F2E4DE; /* Specific color for the button */
   color: #000000;
   border: none;
   border-radius: 10px;
   padding: 15px 30px;
   cursor: pointer;
-  font-size: 18px; /* This is the new line you're adding */
+  font-size: 18px;
+  display: block; /* Make button take the full width */
+  margin: 10px auto; /* Add margin for spacing between buttons */
 }
 
-#refreshButton:hover {
+.button-style:hover {
   opacity: 0.9;
 }
 
@@ -74,15 +77,15 @@ footer a:hover {
 /* Responsive adjustments for footer */
 @media (max-width: 576px) {
   footer {
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-      font-family: 'Roboto', sans-serif; /* Changing font to Roboto */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif; /* Changing font to Roboto */
   }
 
   footer p {
-      width: 100%;
-      margin-bottom: 10px;
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
 
