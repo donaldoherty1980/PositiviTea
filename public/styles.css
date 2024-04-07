@@ -18,8 +18,8 @@ html, body {
 }
 
 .icon img {
-  margin-top: 100px;
-  max-width: 250px;
+  margin-top: 110px;
+  max-width: 200px;
   height: auto;
 }
 
@@ -51,6 +51,7 @@ html, body {
 
 #donateButton {
   background-color: #C6C3BD;
+  color: #FFFFFF; /* Sets the text color to white */
 }
 
 .button-style:hover {
