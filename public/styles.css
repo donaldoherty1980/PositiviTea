@@ -4,38 +4,43 @@
   box-sizing: border-box;
 }
 
-html, body {
-  min-height: 100%;
-  font-family: 'Merriweather', serif;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: column; /* Stack the main container and footer vertically */
+html {
+  height: 100%; /* Make sure the HTML element fills the height of the screen */
 }
 
-body > .main-container {
-  flex-grow: 1; /* Allows the main container to grow and use up available space */
+body {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Merriweather', serif;
+  background-color: #ffffff;
+  margin: 0; /* Remove default margin */
+}
+
+.main-container {
+  flex: 1; /* Grow to take up all available space */
   display: flex;
   flex-direction: column;
   justify-content: center; /* Center content vertically */
   align-items: center; /* Center content horizontally */
+  padding: 0 20px; /* Add padding to maintain spacing */
 }
 
 .icon img {
   max-width: 250px;
   height: auto;
-  margin-bottom: 20px; /* Adjust if needed */
+  margin-bottom: 20px;
 }
 
 .affirmation {
   font-size: 28px;
-  margin: 20px 0; /* Adjust if needed */
+  margin: 20px 0;
 }
 
 .buttons {
   display: flex;
-  gap: 20px; /* Adjust if needed */
-  justify-content: center; /* Center buttons horizontally */
-  margin-top: 40px; /* Adjust if needed */
+  gap: 20px;
+  justify-content: center;
 }
 
 .button-style {
@@ -56,24 +61,22 @@ footer {
   width: 100%;
   padding: 20px;
   font-family: 'Roboto', sans-serif;
-  border-top: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  align-items: center; /* This ensures the footer content is vertically centered */
-  text-align: center; /* Center text for smaller widths */
+  align-items: center;
+  text-align: center;
 }
 
 footer p, footer a {
   color: #84807C;
   text-decoration: none;
-  font-size: 0.75rem; /* Adjust font size as needed */
+  font-size: 0.75rem;
 }
 
 footer a:hover {
   text-decoration: underline;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 576px) {
   footer {
     flex-direction: column;
@@ -81,7 +84,7 @@ footer a:hover {
   }
 
   footer p {
-    margin-bottom: 10px; /* Adds spacing between the author and icon info on small screens */
+    margin-bottom: 10px;
   }
 }
 
