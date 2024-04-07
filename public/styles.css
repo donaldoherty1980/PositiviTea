@@ -5,38 +5,41 @@
 }
 
 html, body {
-  height: 100%;
+  min-height: 100%;
   font-family: 'Merriweather', serif;
   background-color: #ffffff;
+  display: flex;
+  flex-direction: column; /* Stack the main container and footer vertically */
 }
 
-.main-container {
-  text-align: center;
-  padding-top: 5vh;
-  padding-bottom: 10vh;
-  height: calc(100% - 60px);
+body > .main-container {
+  flex-grow: 1; /* Allows the main container to grow and use up available space */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center content vertically */
+  align-items: center; /* Center content horizontally */
 }
 
 .icon img {
-  margin-top: 100px;
   max-width: 250px;
   height: auto;
+  margin-bottom: 20px; /* Adjust if needed */
 }
 
 .affirmation {
   font-size: 28px;
-  margin: 20px 0;
+  margin: 20px 0; /* Adjust if needed */
 }
 
 .buttons {
-  text-align: center;
-  margin-top: 60px; /* Adjusted for better vertical spacing */
   display: flex;
-  justify-content: center;
-  gap: 20px; /* Space between buttons */
+  gap: 20px; /* Adjust if needed */
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 40px; /* Adjust if needed */
 }
 
 .button-style {
+  background-color: #F2E4DE;
   color: #000000;
   border: none;
   border-radius: 10px;
@@ -45,46 +48,40 @@ html, body {
   font-size: 18px;
 }
 
-#refreshButton {
-  background-color: #F2E4DE;
-}
-
-#donateButton {
-  background-color: #C6C3BD;
-}
-
 .button-style:hover {
   opacity: 0.9;
 }
 
 footer {
+  width: 100%;
+  padding: 20px;
+  font-family: 'Roboto', sans-serif;
+  border-top: 1px solid #ccc;
   display: flex;
   justify-content: space-between;
-  padding: 20px;
-  position: relative; /* Keeps footer at bottom */
-  font-family: 'Roboto', sans-serif;
+  align-items: center; /* This ensures the footer content is vertically centered */
+  text-align: center; /* Center text for smaller widths */
 }
 
 footer p, footer a {
-  margin: 0;
-  font-size: 0.75rem;
   color: #84807C;
   text-decoration: none;
+  font-size: 0.75rem; /* Adjust font size as needed */
 }
 
 footer a:hover {
   text-decoration: underline;
 }
 
+/* Responsive adjustments for smaller screens */
 @media (max-width: 576px) {
   footer {
     flex-direction: column;
     align-items: center;
-    text-align: center;
   }
 
   footer p {
-    width: 100%;
-    margin-bottom: 10px;
+    margin-bottom: 10px; /* Adds spacing between the author and icon info on small screens */
   }
 }
+
