@@ -10,15 +10,16 @@
 <body>
     <div class="main-container">
         <div class="icon">
-            <!-- Update the src attribute with the direct Dropbox link -->
             <img src="https://dl.dropboxusercontent.com/scl/fi/rk46lr2pc51yjznlwsap0/lotus-icon.png?rlkey=hlshj0thukriv5z8ubmjwfrjz&dl=1" alt="Lotus Icon" id="affirmationIcon">
         </div>
         <div class="affirmation">
-            <p id="affirmationText">Loading...</p> <!-- Placeholder text while affirmation is loading -->
+            <p id="affirmationText">Loading...</p>
         </div>
         <div class="buttons" style="text-align: center;">
+            <!-- Existing Refresh Button -->
             <button id="refreshButton">Refresh</button>
-            <p><a href="https://www.paypal.com/donate/?hosted_button_id=4SB5TX4VA78XW" target="_blank" class="donateLink">Donate</a></p>
+            <!-- Donate Button That Opens PayPal in a Popup -->
+            <button id="donateButton">Donate</button>
         </div>
     </div>
     <footer>
@@ -26,5 +27,12 @@
         <p>Icon by <a href="https://www.flaticon.com/free-icons/wellness">Freepik - Flaticon</a></p>
     </footer>
     <script src="script.js"></script>
+    <script>
+        document.getElementById('donateButton').addEventListener('click', function() {
+            var donationUrl = 'https://www.paypal.com/donate/?hosted_button_id=4SB5TX4VA78XW';
+            var popupOptions = 'width=800,height=600,left=200,top=200';
+            window.open(donationUrl, 'Donate', popupOptions);
+        });
+    </script>
 </body>
 </html>
