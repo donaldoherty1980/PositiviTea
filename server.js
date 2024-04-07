@@ -2,6 +2,7 @@
 import express from 'express';
 import { MongoClient } from 'mongodb';
 import dotenv from 'dotenv';
+import path from 'path';
 
 dotenv.config();
 
@@ -11,7 +12,6 @@ const uri = process.env.MONGO_URI;
 const client = new MongoClient(uri);
 
 async function connectToDatabase() {
-  // Check the connection status using the internal 'topology' property
   if (!client.topology || !client.topology.isConnected()) {
     console.log('Initiating new database connection...');
     await client.connect();
@@ -19,9 +19,8 @@ async function connectToDatabase() {
   return client;
 }
 
-app.get('/', (req, res) => {
-  res.send('Welcome to the Zen Affirmations API!');
-});
+// Serve static files from 'public' directory
+app.use(express.static('public'));
 
 app.get('/api/affirmation', async (req, res) => {
   try {
