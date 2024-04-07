@@ -7,11 +7,12 @@ document.addEventListener('DOMContentLoaded', function() {
         try {
             // Update the endpoint to match the Vercel serverless function route
             const response = await fetch('/api/affirmation');
-            if (!response.ok) { 
-                throw new Error(`HTTP error! status: ${response.status}`); 
-            }
-            const data = await response.json();  
-            affirmationText.textContent = data.text;
+    if (!response.ok) { 
+    throw new Error(`HTTP error! status: ${response.status}`); 
+    }   
+    const data = await response.json();  
+    affirmationText.textContent = data.affirmation;
+
         } catch (error) {
             console.error('Error fetching affirmation:', error);
             // Handle errors, such as by displaying a default message or an error message
