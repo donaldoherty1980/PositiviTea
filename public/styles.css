@@ -59,21 +59,16 @@ html, body {
 }
 
 footer {
-  width: 100%;
-  padding: 20px;
   display: flex;
-  justify-content: space-between; /* Positions items on each end */
-  align-items: center; /* Centers items vertically */
+  justify-content: space-between;
+  padding: 20px;
+  position: relative; /* Keeps footer at bottom */
   font-family: 'Roboto', sans-serif;
-  border-top: 1px solid #ccc; /* Adds a top border to the footer */
 }
 
-footer p {
-  margin: 0; /* Removes default margin */
-  color: #84807C;
-}
-
-footer a {
+footer p, footer a {
+  margin: 0;
+  font-size: 0.75rem;
   color: #84807C;
   text-decoration: none;
 }
@@ -82,15 +77,15 @@ footer a:hover {
   text-decoration: underline;
 }
 
-/* Responsive adjustments for smaller screens */
 @media (max-width: 576px) {
   footer {
-    flex-direction: column; /* Stacks items vertically on small screens */
-    align-items: center; /* Center-aligns items */
-    text-align: center; /* Centers text */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 
   footer p {
-    margin-bottom: 10px; /* Adds spacing between the author and icon info on small screens */
+    width: 100%;
+    margin-bottom: 10px;
   }
 }
