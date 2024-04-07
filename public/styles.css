@@ -8,32 +8,36 @@ html, body {
   height: 100%;
   font-family: 'Merriweather', serif;
   background-color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .main-container {
   text-align: center;
-  padding-top: 5vh;
-  padding-bottom: 10vh;
-  height: calc(100% - 60px);
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Center children vertically */
+  align-items: center; /* Center children horizontally */
+  height: 100vh; /* Use the full viewport height */
 }
 
 .icon img {
-  margin-top: 120px;
+  margin-bottom: 20px; /* Adjust as needed for spacing */
   max-width: 250px;
   height: auto;
 }
 
 .affirmation {
   font-size: 28px;
-  margin: 20px 0;
+  margin: 20px 0; /* Adjust top/bottom margin for spacing */
 }
 
 .buttons {
-  text-align: center;
-  margin-top: 60px; /* Adjusted for better vertical spacing */
   display: flex;
-  justify-content: center;
   gap: 20px; /* Space between buttons */
+  justify-content: center; /* Center buttons horizontally */
+  margin-top: 40px; /* Adjust as needed for spacing */
 }
 
 .button-style {
