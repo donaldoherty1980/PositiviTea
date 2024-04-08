@@ -1,7 +1,7 @@
 {
-  "name": "zen",
+  "name": "positivitea",
   "version": "1.0.0",
-  "description": "A simple Node.js app providing daily affirmations",
+  "description": "A simple Node.js app providing affirmations and self-care tips",
   "type": "module",
   "scripts": {
     "start": "node server.js",
