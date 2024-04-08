@@ -18,8 +18,14 @@
             <p id="affirmationText">Brewing...</p>
         </div>
         <div class="buttons">
-            <button id="refreshButton" class="button-style">Refresh</button>
-            <button id="donateButton" class="button-style">Donate</button>
+            <button id="refreshButton" class="button-style">
+                Refresh
+                <span class="tooltip">Fill Your Cup</span>
+              </button>
+              <button id="donateButton" class="button-style">
+                Donate
+                <span class="tooltip">Buy Me A Cup</span>
+              </button>
         </div>        
     </div>
     <footer>
@@ -27,12 +33,31 @@
         <p class="icon-attribution">Icon by <a href="https://www.flaticon.com/free-icons/wellness" target="_blank">Freepik - Flaticon</a></p>
     </footer>
     <script src="script.js"></script>
-    <script>
-        document.getElementById('donateButton').addEventListener('click', function() {
-            var donationUrl = 'https://www.paypal.com/donate/?hosted_button_id=4SB5TX4VA78XW';
-            var popupOptions = 'width=550,height=550,left=150,top=150'; // Adjusted height for a more square appearance
-            window.open(donationUrl, 'Donate', popupOptions);
+<script>
+    // Handle the Donate button click
+    document.getElementById('donateButton').addEventListener('click', function() {
+        var donationUrl = 'https://www.paypal.com/donate/?hosted_button_id=4SB5TX4VA78XW';
+        var popupOptions = 'width=550,height=550,left=150,top=150';
+        window.open(donationUrl, 'Donate', popupOptions);
+    });
+
+    // Add tooltips or alerts on mobile for button clicks
+    document.querySelectorAll('.button-style').forEach(button => {
+        button.addEventListener('click', function() {
+            // Define your tooltips or messages here
+            let messageMap = {
+                'refreshButton': 'Fill Your Cup',
+                'donateButton': 'Buy Me A Cup'
+            };
+
+            // Check if the device width is less than or equal to 768 pixels
+            if (window.innerWidth <= 768) {
+                // Replace the alert with a modal or custom tooltip for production use
+                alert(messageMap[this.id]);
+            }
         });
-    </script>
+    });
+</script>
+
 </body>
 </html>
