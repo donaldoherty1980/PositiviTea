@@ -8,6 +8,15 @@
     <title>PositiviTea | Affirmations & Self Care</title>
     <meta name="keywords" content="positivity, affirmations, self-help, mental wellness, daily affirmations">
     <link rel="stylesheet" href="styles.css">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-GFLR9D92GX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GFLR9D92GX');
+    </script>
 </head>
 <body>
     <div class="main-container">
@@ -30,9 +39,10 @@
     <script>
         document.getElementById('donateButton').addEventListener('click', function() {
             var donationUrl = 'https://www.paypal.com/donate/?hosted_button_id=4SB5TX4VA78XW';
-            var popupOptions = 'width=550,height=550,left=150,top=150'; // Adjusted height for a more square appearance
+            var popupOptions = 'width=550,height=550,left=150,top=150';
             window.open(donationUrl, 'Donate', popupOptions);
         });
     </script>
 </body>
 </html>
+
