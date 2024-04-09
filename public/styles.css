@@ -37,6 +37,7 @@ body {
   font-size: 28px;
   margin: 20px 0;
   text-align: center; /* Center-aligns text */
+  padding: 0 20px; /* This ensures padding on smaller screens */
 }
 
 .buttons {
@@ -101,3 +102,9 @@ footer a:hover {
   }
 }
 
+@media (min-width: 1024px) {
+  .affirmation {
+    max-width: 75%;
+    margin: 20px auto;
+  }
+}
